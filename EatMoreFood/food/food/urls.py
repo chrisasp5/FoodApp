@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url,include
+from mpjct import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('entries.urls')),
-    path('myproject/', include('myproject.urls')),
+    path('entries/', include('entries.urls')),
+    url(r'^$',views.index,name='index'),
+    url(r'^special/',views.special,name='special'),
+    url(r'^mpjct/',include('mpjct.urls')),
+    url(r'^logout/$', views.user_logout, name='logout'),
 ]

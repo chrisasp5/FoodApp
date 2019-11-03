@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Food App Dashboard">
+  <meta name="author" content="Chris Asp">
+  {% block title %}
+  <title>Eat More Food App Dashboard</title>
+  {% endblock %}
+  {% block styles %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'entries/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Bootstrap theme -->
+  <link href="{% static 'entries/bootstrap-theme.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'entries/theme.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap/wtf.html' %}" rel="stylesheet">
+
+  {% endblock %}
+</head>
+{% block content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+        <span class="sr-only">Toggle navigation</span>
+
+        <span class="icon-bar"></span>
+
+        <span class="icon-bar"></span>
+
+        <span class="icon-bar"></span>
+
+      </button>
+
+      <a class="navbar-brand" href="#">Eat More Food</a>
+
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'add' %}">New</a></li>
+        <li><a href="{% url 'past' %}">Dashboard</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+
+        <input type="text" class="form-control" placeholder="Search...">
+
+      </form>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<div class="container">
+  <div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+      <h2>Welcome Back, {{ user }}</h2>
+      <h1>Dashboard</h1>
+    </div>
+    <h1 class="page-header">Featured Foods</h1>
+
+
+
+    <div class="row placeholders">
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+
+        <img src="https://cdn.pixabay.com/photo/2016/01/05/13/58/apple-1122537__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+
+        <h4>Top Rated</h4>
+
+        <span class="text-muted">Apples</span>
+        <p><span class="text-muted">Rating: 5</span></p>
+
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+
+        <img src="https://cdn.pixabay.com/photo/2018/07/06/08/49/tomato-3520004_960_720.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+
+        <h4>Lowest Rated</h4>
+
+        <span class="text-muted">Tomato</span>
+        <p><span class="text-muted">Rating: 1</span></p>
+
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+
+        <img src="https://cdn.pixabay.com/photo/2016/11/18/13/48/food-1834645__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+
+        <h4>Last Eaten</h4>
+
+        <span class="text-muted">Lettuce</span>
+        <p><span class="text-muted">Rating: 2</span></p>
+
+      </div>
+
+      <div class="col-xs-6 col-sm-3 placeholder">
+
+        <img src="https://cdn.pixabay.com/photo/2017/03/04/12/10/avocado-2115922__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+
+        <h4>Something New</h4>
+
+        <span class="text-muted">Avocado</span>
+        <p><span class="text-muted">Rating: ?</span></p>
+
+      </div>
+
+    </div>
+
+
+
+    <h2 class="sub-header">Past Food Exposures</h2>
+
+    <div class="table-responsive">
+
+      <table class="table table-striped">
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>Name</th>
+
+            <th>Rating</th>
+
+            <th>Comments</th>
+
+            <th>Date</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+{% for n in newfoods %}
+          <tr>
+
+            <td>{{ n.id }}</td>
+
+            <td>{{ n.name }}</td>
+
+            <td>{{ n.rating }}</td>
+
+            <td>{{ n.comments }}</td>
+
+            <td>{{ n.date_added }}</td>
+
+
+          </tr>
+{% endfor %}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+</html>
+{% endblock %}

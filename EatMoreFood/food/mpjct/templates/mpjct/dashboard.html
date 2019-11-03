@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="Food App Dashboard">
+  <meta name="author" content="Codejoy">
+  {% block title %}
+  <title>Food App Dashboard</title>
+  {% endblock %}
+  {% block styles %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'mpjct/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Bootstrap theme -->
+  <link href="{% static 'mpjct/bootstrap-theme.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'mpjct/theme.css' %}" rel="stylesheet">
+  <link href="{% static 'bootstrap/wtf.html' %}" rel="stylesheet">
+  {% endblock %}
+</head>
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Eat More Food</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">New</a></li>
+        <li><a href="#">Dashboard</a></li>
+
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="page-header">Welcome, {{ name }}</h1>
+
+<div class="row placeholders">
+  <div class="col-xs-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+    <h4>Top Rated</h4>
+    <span class="text-muted">Apples</span>
+  </div>
+  <div class="col-xs-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+    <h4>Most Improved</h4>
+    <span class="text-muted">Tomato</span>
+  </div>
+  <div class="col-xs-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+    <h4>Opportunity</h4>
+    <span class="text-muted">Lettuce</span>
+  </div>
+  <div class="col-xs-6 col-sm-3 placeholder">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+    <h4>Something New</h4>
+    <span class="text-muted">Avocado</span>
+  </div>
+</div>
+
+<h2 class="sub-header">Section title</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Comments</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in newfoods %}
+      <div class="page-header">
+        <tr>
+          <td>{{ c.id }}</td>
+          <td>{{ c.name }}</td>
+          <td>{{ c.rating }}</td>
+          <td>{{ c.comments }}</td>
+          <td>{{ c.date_added }}</td>
+        </tr>
+      </div>
+      {% endfor %}
+      {% for c in newfoods %}
+      <div class="page-header">
+        <h4>Food Name</h4>
+        <h2>{{ c.name }}</h2>
+        <h4>Rating</h4>
+        <h2>{{ c.rating }}</h2>
+        <h4>Comments</h4>
+        <h2>{{ c.comments }}</h2>
+      </div>
+      {% endfor %}
+
+      {% for c in newfoods %}
+      <div class="page-header">
+        <h4>Food Name</h4><h4>Rating</h4><h4>Comments</h4>
+        <h2>{{ c.name }}</h2>
+        <h2>{{ c.rating }}</h2>
+        <h2>{{ c.comments }}</h2>
+      </div>
+      {% endfor %}
+
+    </div>
+      <tr>
+        <td>1,001</td>
+        <td>Lorem</td>
+        <td>ipsum</td>
+        <td>dolor</td>
+        <td>sit</td>
+      </tr>
+      <tr>
+        <td>1,002</td>
+        <td>amet</td>
+        <td>consectetur</td>
+        <td>adipiscing</td>
+        <td>elit</td>
+      </tr>
+      <tr>
+        <td>1,003</td>
+        <td>Integer</td>
+        <td>nec</td>
+        <td>odio</td>
+        <td>Praesent</td>
+      </tr>
+      <tr>
+        <td>1,003</td>
+        <td>libero</td>
+        <td>Sed</td>
+        <td>cursus</td>
+        <td>ante</td>
+      </tr>
+      <tr>
+        <td>1,004</td>
+        <td>dapibus</td>
+        <td>diam</td>
+        <td>Sed</td>
+        <td>nisi</td>
+      </tr>
+      <tr>
+        <td>1,005</td>
+        <td>Nulla</td>
+        <td>quis</td>
+        <td>sem</td>
+        <td>at</td>
+      </tr>
+      <tr>
+        <td>1,006</td>
+        <td>nibh</td>
+        <td>elementum</td>
+        <td>imperdiet</td>
+        <td>Duis</td>
+      </tr>
+      <tr>
+        <td>1,007</td>
+        <td>sagittis</td>
+        <td>ipsum</td>
+        <td>Praesent</td>
+        <td>mauris</td>
+      </tr>
+      <tr>
+        <td>1,008</td>
+        <td>Fusce</td>
+        <td>nec</td>
+        <td>tellus</td>
+        <td>sed</td>
+      </tr>
+      <tr>
+        <td>1,009</td>
+        <td>augue</td>
+        <td>semper</td>
+        <td>porta</td>
+        <td>Mauris</td>
+      </tr>
+      <tr>
+        <td>1,010</td>
+        <td>massa</td>
+        <td>Vestibulum</td>
+        <td>lacinia</td>
+        <td>arcu</td>
+      </tr>
+      <tr>
+        <td>1,011</td>
+        <td>eget</td>
+        <td>nulla</td>
+        <td>Class</td>
+        <td>aptent</td>
+      </tr>
+      <tr>
+        <td>1,012</td>
+        <td>taciti</td>
+        <td>sociosqu</td>
+        <td>ad</td>
+        <td>litora</td>
+      </tr>
+      <tr>
+        <td>1,013</td>
+        <td>torquent</td>
+        <td>per</td>
+        <td>conubia</td>
+        <td>nostra</td>
+      </tr>
+      <tr>
+        <td>1,014</td>
+        <td>per</td>
+        <td>inceptos</td>
+        <td>himenaeos</td>
+        <td>Curabitur</td>
+      </tr>
+      <tr>
+        <td>1,015</td>
+        <td>sodales</td>
+        <td>ligula</td>
+        <td>in</td>
+        <td>libero</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

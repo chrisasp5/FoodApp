@@ -1,4 +1,4 @@
-#!/home/codejoy/github/FoodApp/EatMoreFood/food/venv/bin/python2
+#!/home/codejoy/github/FoodApp/EatMoreFood/food/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
