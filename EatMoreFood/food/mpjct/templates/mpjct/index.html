@@ -1,11 +1,23 @@
 {% extends "mpjct/base.html" %}
-
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Eat More Food Index">
+    <meta name="author" content="Chris Asp">
+{% block title %}
+    <title>Index</title>
+    {% endblock %}
+  </head>
       {% block body_block %}
       <div class="container">
         <div class="jumbotron">
           <h1>Welcome!</h1>
           {% if user.is_authenticated %}
-              <h2>Hello {{ user.username }}</h2>
+              <h2>Hello {{ user }}</h2>
+              <h2>Go <a href="{%url 'home' %}">Home?</a></h2>
+              <h2>Track a <a href="{% url 'add' %}">New Food?</a></h2>
           {% else %}
               <h2>Register or Login if you'd like to</h2>
           {% endif %}

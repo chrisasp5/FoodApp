@@ -41,6 +41,13 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'add' %}">New</a></li>
                 <li><a href="{% url 'past' %}">Dashboard</a></li>
+                {# Some logic on what to display for last item#}
+                {% if user.is_authenticated %}
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                  <li><a class="navbar-link" href="{% url 'mpjct:signup' %}">Signup</a></li>
+                  <li><a class="navbar-link" href="{% url 'mpjct:user_login' %}">Login</a></li>
+                {% endif %}
               </ul>
               <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" gplaceholder="Search...">
@@ -52,7 +59,7 @@
 <div class="container">
     <div class="container theme-showcase" role="main">
       <div class="jumbotron">
-        <h2>Welcome Back, Danielle</h2>
+        <h2>Welcome Back, {{ userprofileinfo.name }}{% for n in userprofiles %}{{ n.name }}{% endfor %}{{ user }}</h2>
         <h1>Home</h1>
       </div>
                     <div>Welcome back to Eat More Food and to your continued food journey. <br>Variety is the spice of life and the basis of good health.<br>We're thrilled to assist you in increasing your food variety.</div></br>

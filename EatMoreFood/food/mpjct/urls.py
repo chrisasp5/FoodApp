@@ -24,6 +24,8 @@ app_name = 'mpjct'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('add/', views.add, name='add'),
+    path('home/', views.home, name='home'),
     path('', views.index, name='index'),
     url(r'^register/$',views.register,name='signup'),
     url(r'^user_login/$',views.user_login,name='user_login'),

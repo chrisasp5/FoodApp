@@ -54,6 +54,13 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'add' %}">New</a></li>
         <li><a href="{% url 'past' %}">Dashboard</a></li>
+        {# Some logic on what to display for last item#}
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a class="navbar-link" href="{% url 'mpjct:signup' %}">Signup</a></li>
+          <li><a class="navbar-link" href="{% url 'mpjct:user_login' %}">Login</a></li>
+        {% endif %}
       </ul>
       <form class="navbar-form navbar-right">
 
@@ -71,7 +78,7 @@
 <div class="container">
   <div class="container theme-showcase" role="main">
     <div class="jumbotron">
-      <h2>Welcome Back, {{ user }}</h2>
+      <h2>Welcome Back, {{ user }} {{ user.userprofileinfo.name }}</h2>
       <h1>Dashboard</h1>
     </div>
     <h1 class="page-header">Featured Foods</h1>
@@ -81,41 +88,33 @@
     <div class="row placeholders">
 
       <div class="col-xs-6 col-sm-3 placeholder">
-
-        <img src="https://cdn.pixabay.com/photo/2016/01/05/13/58/apple-1122537__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-
-        <h4>Top Rated</h4>
-
-        <span class="text-muted">Apples</span>
-        <p><span class="text-muted">Rating: 5</span></p>
+        <h4>Last Entry</h4>
+        <span class="text-muted">{{ last_entry.name }}
+        <p><span class="text-muted">Rating: {{ last_entry.rating }}</span></p>
+        <p><span class="text-muted">Comments: {{ last_entry.comments }}</span></p>
 
       </div>
 
       <div class="col-xs-6 col-sm-3 placeholder">
+        <h4>Lowest Rated </h4>
 
-        <img src="https://cdn.pixabay.com/photo/2018/07/06/08/49/tomato-3520004_960_720.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-
-        <h4>Lowest Rated</h4>
-
-        <span class="text-muted">Tomato</span>
-        <p><span class="text-muted">Rating: 1</span></p>
-
+        <span class="text-muted">{{ entry.name }}</span>
+        <p><span class="text-muted">Rating: {{ entry.rating }}</span></p>
+        <p><span class="text-muted">Comments: {{ entry.comments }}</span></p>
       </div>
 
       <div class="col-xs-6 col-sm-3 placeholder">
 
-        <img src="https://cdn.pixabay.com/photo/2016/11/18/13/48/food-1834645__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
 
-        <h4>Last Eaten</h4>
+        <h4>First Eaten</h4>
 
-        <span class="text-muted">Lettuce</span>
-        <p><span class="text-muted">Rating: 2</span></p>
+        <span class="text-muted">{{ entry.name }}</span>
+        <p><span class="text-muted">Rating: {{ entry.rating }}</span></p>
+        <p><span class="text-muted">Comments: {{ entry.comments }}</span></p>
 
       </div>
 
       <div class="col-xs-6 col-sm-3 placeholder">
-
-        <img src="https://cdn.pixabay.com/photo/2017/03/04/12/10/avocado-2115922__340.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
 
         <h4>Something New</h4>
 
@@ -138,15 +137,11 @@
 
           <tr>
 
-            <th>#</th>
-
             <th>Name</th>
 
             <th>Rating</th>
 
             <th>Comments</th>
-
-            <th>Date</th>
 
           </tr>
 
@@ -156,16 +151,11 @@
 {% for n in newfoods %}
           <tr>
 
-            <td>{{ n.id }}</td>
-
             <td>{{ n.name }}</td>
 
             <td>{{ n.rating }}</td>
 
             <td>{{ n.comments }}</td>
-
-            <td>{{ n.date_added }}</td>
-
 
           </tr>
 {% endfor %}
